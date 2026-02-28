@@ -18,7 +18,8 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        # Try `npm ci` when a lockfile exists, otherwise fall back to `npm install`
+        run: npm ci || npm install
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
